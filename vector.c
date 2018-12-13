@@ -7,9 +7,16 @@ int main(void)
 	return 0;
 };
 
-// Initialize a vector to be empty.
-// Pre: v != NULL
+
 void Vector_ctor(Vector *v){
-	v->used = 0;
+	v->usedSpace = 0;
+	v->size = 10;
+	v->parray = (int *)malloc(size * sizeof(int));
+};
+
+void Vector_dtor(Vector *v){
+	free(v->parray);
+	v->parray = NULL;
+	v->usedSpace = 0;
 	v->size = 0;
 };
