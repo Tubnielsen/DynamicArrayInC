@@ -15,7 +15,10 @@ typedef struct Vector Vector;
 
 // actually define the structs
 struct Vector {
-//TODO
+	size_t size;
+	size_t usedSpace;
+	int *parray;
+};
 
 // Initialize a vector to be empty.
 // Pre: v != NULL
