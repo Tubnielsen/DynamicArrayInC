@@ -3,28 +3,12 @@
 
 static const int CELLSIZE = 32;
 
-/*int main(void)
-{	
-	Vector t;
-	Vector *v;
-	v = &t;
-	Vector_ctor(v);
-	Vector_push_back(v, 5);
-	Vector_push_back(v, 7);
-	Vector_push_back(v, 1);
-	printf("%p \n", v->parray);
-	printf("%ld \n", v->size);
-	printf("%p \n", v->parray);
-	
-	return 0;
-}*/
-
 // Initialize a vector to be empty.
 // Pre: v != NULL
 void Vector_ctor(Vector *v){
 	v->usedSpace = 0;
 	v->size = 1;
-	v->parray = (int *)malloc(v->size * CELLSIZE);
+	v->parray = malloc(v->size * CELLSIZE);
 	//printf("ctor %p\n",v->parray);
 
 }
@@ -41,12 +25,12 @@ void Vector_dtor(Vector *v){
 void Vector_push_back(Vector *v, void *value){
 	if(v->size <= v->usedSpace + 1){
 		v->size *= 2;
-		v->parray = (int *)realloc(v->parray, v->size * CELLSIZE);
+		v->parray = realloc(v->parray, v->size * CELLSIZE);
 	}
-	// PROBLEM: Vi får ikke gemt værdien i hukomelsen.
-    	char *p = v->parray + (v->usedSpace*CELLSIZE);
-	*p = value;
-	printf("%p: %s\n", p, value);
+
+    	char *p = (v->parray + (v->usedSpace*CELLSIZE));
+	strcpy(p,value);
+	printf("%p: %s\n",p,p);
 	v->usedSpace = v->usedSpace +1;
 }
 
