@@ -14,7 +14,7 @@ void printVector(Vector *v){
     char *value;
     for (i=0; i < v->usedSpace; i++){
         value = v->parray + (i * CELLSIZE);
-        printf("%p - %s\n", value, value);
+        printf("%s", value);
     }
 }
 
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 
     fclose(fp);
     
-    printVector(p);
+    //printVector(p);
     qsort(p->parray, p->usedSpace, CELLSIZE, cmpstr);
     printVector(p);
 

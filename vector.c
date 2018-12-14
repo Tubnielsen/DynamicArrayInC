@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "vector.h"
+#include <string.h>
 
 static const int CELLSIZE = 32;
 
@@ -9,8 +10,6 @@ void Vector_ctor(Vector *v){
 	v->usedSpace = 0;
 	v->size = 1;
 	v->parray = malloc(v->size * CELLSIZE);
-	//printf("ctor %p\n",v->parray);
-
 }
 
 // Deallocate internal structures of the vector.
