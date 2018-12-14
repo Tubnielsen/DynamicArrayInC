@@ -25,6 +25,7 @@ void Vector_ctor(Vector *v){
 	v->usedSpace = 0;
 	v->size = 1;
 	v->parray = (int *)malloc(v->size * CELLSIZE);
+
 }
 
 // Deallocate internal structures of the vector.
@@ -32,22 +33,21 @@ void Vector_ctor(Vector *v){
 // Note: the user is responsible for deleting the actual vector if it was dynamically allocated.
 void Vector_dtor(Vector *v){
 	free(v->parray);
-	v->parray = NULL;
-	v->usedSpace = NULL;
-	v->size = NULL;
 }
 
 // Insert a new element at the end of the vector.
 // Pre: v != NULL
 void Vector_push_back(Vector *v, void *value){
-	v->usedSpace++;
-	if(v->size <= v->usedSpace){
+	if(v->size <= v->usedSpace + 1){
 		v->size *= 2;
-		realloc(v->parray, v->size * CELLSIZE);
+		v->parray = (int *)realloc(v->parray, v->size * CELLSIZE);
 	}
     void *p = v->parray + (v->usedSpace * CELLSIZE);
 	p = value;
-	printf("%s", value);
+	v->usedSpace = v->usedSpace +1;
+	printf("%p \n", p);
+	printf("%ld \n", v->usedSpace);
+	//printf("%s", value);
 	
 
 }
