@@ -3,11 +3,9 @@
 #include <stdio.h>
 
 int cmpstr(const void* a, const void* b){
-    const char **aa = (const char**)a;
-    const char **bb = (const char**)b;
-    int ret = strcmp(*aa,*bb);
-    printf("%d",ret);
-    return ret;
+    const char *aa = a;
+    const char *bb = b;
+    return strcmp(aa,bb);
 }
 
 //helper function: prints each element of our Vector *v.

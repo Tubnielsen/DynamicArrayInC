@@ -28,9 +28,8 @@ void Vector_push_back(Vector *v, void *value){
 		v->parray = realloc(v->parray, v->size * CELLSIZE);
 	}
 
-    	char *p = (v->parray + (v->usedSpace*CELLSIZE));
+    char *p = (v->parray + (v->usedSpace*CELLSIZE));
 	strcpy(p,value);
-	printf("%p: %s\n",p,p);
 	v->usedSpace = v->usedSpace +1;
 }
 
