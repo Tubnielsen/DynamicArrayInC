@@ -10,8 +10,8 @@ int cmpstr(const void* a, const void* b){
 
 void printVector(Vector *v){
     for (int i=0; i < v->usedSpace; i++){
-        void *print = v->parray + i * CELLSIZE;
-        printf("%x \n", &print);
+        void *print = v->parray + (i * CELLSIZE);
+        printf("%s \n", v->parray);
     }
 }
 
@@ -19,12 +19,12 @@ int main(int argc, char *argv[]){
     Vector v;
     Vector *p = &v;
     Vector_ctor(p);
+    
     FILE *fp; 
     char buffer [CELLSIZE];
     char *b = &buffer;
     fp = fopen( argv[1],"r");
-    
-    
+      
     while (fgets(buffer, CELLSIZE, fp) != NULL){
         Vector_push_back(p, b);
         //printf("%s", b);
@@ -32,7 +32,8 @@ int main(int argc, char *argv[]){
     }
 
     fclose(fp);
-    printVector(&p);
+    
+    printVector(p);
     //qsort(p->parray, p->usedSpace, CELLSIZE, cmpstr);
     //printVector(p);
 

@@ -40,13 +40,14 @@ void Vector_dtor(Vector *v){
 // Insert a new element at the end of the vector.
 // Pre: v != NULL
 void Vector_push_back(Vector *v, void *value){
-	
-	if(v->size <= ++v->usedSpace){
+	v->usedSpace++;
+	if(v->size <= v->usedSpace){
 		v->size *= 2;
 		realloc(v->parray, v->size * CELLSIZE);
 	}
-    void *p = v->parray + v->usedSpace;
+    void *p = v->parray + (v->usedSpace * CELLSIZE);
 	p = value;
+	printf("%s", value);
 	
 
 }
