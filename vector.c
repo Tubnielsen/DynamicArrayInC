@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "vector.h"
 
-int main(void)
+static const int CELLSIZE = 32;
+
+/*int main(void)
 {	
 	Vector t;
 	Vector *v;
@@ -10,19 +12,19 @@ int main(void)
 	Vector_push_back(v, 5);
 	Vector_push_back(v, 7);
 	Vector_push_back(v, 1);
-	printf("%ls \n", v->parray);
+	printf("%p \n", v->parray);
 	printf("%ld \n", v->size);
-	printf("%ls \n", v->parray);
+	printf("%p \n", v->parray);
 	
 	return 0;
-}
+}*/
 
 // Initialize a vector to be empty.
 // Pre: v != NULL
 void Vector_ctor(Vector *v){
 	v->usedSpace = 0;
 	v->size = 1;
-	v->parray = (int *)malloc(v->size * sizeof(int));
+	v->parray = (int *)malloc(v->size * CELLSIZE);
 }
 
 // Deallocate internal structures of the vector.
@@ -31,8 +33,8 @@ void Vector_ctor(Vector *v){
 void Vector_dtor(Vector *v){
 	free(v->parray);
 	v->parray = NULL;
-	v->usedSpace = 0;
-	v->size = 0;
+	v->usedSpace = NULL;
+	v->size = NULL;
 }
 
 // Insert a new element at the end of the vector.
@@ -41,9 +43,9 @@ void Vector_push_back(Vector *v, void *value){
 	
 	if(v->size <= ++v->usedSpace){
 		v->size *= 2;
-		realloc(v->parray, v->size * sizeof(int));
+		realloc(v->parray, v->size * CELLSIZE);
 	}
-    int *p = v->parray + v->usedSpace;
+    void *p = v->parray + v->usedSpace;
 	p = value;
 	
 
@@ -69,7 +71,7 @@ size_t Vector_capacity(const Vector *v){
 // Return the value at the given index.
 // Pre: v != NULL && index < Vector_size(v)
 void *Vector_get(const Vector *v, size_t index){
-	return v->parray + (sizeof(int) * index);
+	return v->parray + (CELLSIZE * index);
 }
 
 // Return a pointer to the underlying array.

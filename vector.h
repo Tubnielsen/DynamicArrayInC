@@ -17,7 +17,8 @@ typedef struct Vector Vector;
 struct Vector {
 	size_t size;
 	size_t usedSpace;
-	int *parray;
+	void *parray;
+	
 };
 
 // Initialize a vector to be empty.
