@@ -25,6 +25,7 @@ void Vector_ctor(Vector *v){
 	v->usedSpace = 0;
 	v->size = 1;
 	v->parray = (int *)malloc(v->size * CELLSIZE);
+	//printf("ctor %p\n",v->parray);
 
 }
 
@@ -42,14 +43,11 @@ void Vector_push_back(Vector *v, void *value){
 		v->size *= 2;
 		v->parray = (int *)realloc(v->parray, v->size * CELLSIZE);
 	}
-    void *p = v->parray + (v->usedSpace * CELLSIZE);
-	p = value;
+	// PROBLEM: Vi får ikke gemt værdien i hukomelsen.
+    	char *p = v->parray + (v->usedSpace*CELLSIZE);
+	*p = value;
+	printf("%p: %s\n", p, value);
 	v->usedSpace = v->usedSpace +1;
-	printf("%p \n", p);
-	printf("%ld \n", v->usedSpace);
-	//printf("%s", value);
-	
-
 }
 
 // Remove the last element in the vector.

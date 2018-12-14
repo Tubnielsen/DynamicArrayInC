@@ -10,9 +10,11 @@
 
 //helper function: prints each element of our Vector *v.
 void printVector(Vector *v){
-    for (int i=0; i < v->usedSpace; i++){
-        void *print = v->parray + (i * CELLSIZE);
-        printf("%p \n", print);
+    int i;
+    for (i=0; i < v->usedSpace; i++){
+	// HVORDAN LÆSER VI VÆRDIEN I HUKOMELSEN?
+        char *print = v->parray + (i * CELLSIZE);
+        printf("%p - %s\n", print);
     }
 }
 
@@ -20,9 +22,11 @@ int main(int argc, char *argv[]){
     Vector v;
     Vector *p = &v;
     Vector_ctor(p);
-    Vector_push_back(p, "34ewjdsf");
-    Vector_push_back(p, "duahuad3ue8nad");
+    char mystring[] = "ayy";
+    char *lmao = mystring;
+    Vector_push_back(p, lmao);
     Vector_push_back(p, "hello");
+    Vector_push_back(p, "hasdf");
     FILE *fp; 
     char buffer [CELLSIZE];
     char *b = buffer;
