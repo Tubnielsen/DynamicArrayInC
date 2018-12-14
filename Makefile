@@ -1,8 +1,7 @@
-output: vector.o
-	gcc vector.o -output
+all:
+	gcc -o sort sort.c
 
-vector.o: vector.c
-	gcc -c vector.c
+
 
 clean:
-	rm *.o output
+	rm -rf *.o output
