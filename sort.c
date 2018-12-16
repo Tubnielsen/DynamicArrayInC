@@ -2,6 +2,7 @@
 #include "vector.c"
 #include <stdio.h>
 
+//Casts variables to char * and returns the result of strcmp with those variables.
 int cmpstr(const void* a, const void* b){
     const char *aa = a;
     const char *bb = b;
@@ -34,7 +35,6 @@ int main(int argc, char *argv[]){
 
     fclose(fp);
     
-    //printVector(p);
     qsort(p->parray, p->usedSpace, CELLSIZE, cmpstr);
     printVector(p);
 

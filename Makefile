@@ -5,6 +5,9 @@ all: sort.c vector.c
 
 test:
 	for t in test/* ; do \
+		echo testing: ; \
+		echo $$t ; \
+		echo ------------------------------------------ ; \
 		./sort $$t ; \
 		echo ---------------End of File---------------- ; \
 	done
