@@ -1,0 +1,19 @@
+Test case normaltext.txt:
+This test contains normal characters like normal letters and numbers.
+The test is only to see if it actually sort properly in normal cases.
+
+Test case extendedalphabet.txt:
+This test contains characters from the extended alphabet, e.g. umlaut and danish characters.
+The output corresponds to ASCII numeric value.
+
+Test case specialcharacters.txt:
+This test contains special Unicode characters.
+The output corresponds to Unicode numeric value.
+
+Test case specialcharacters.txt:
+This test contains lines with over the limit, set by the program (CELLSIZE which equals 128).
+The test shows that it will do undefined behaviour if the lines are over the limited size. Which is expected.
+
+Additional information:
+For our implementation, there is a limit to how much each "element" in our vectors can store. Which is set by the variable CELLSIZE in vector.c, which is set to 128 (bytes). This is also confirmed by the test case "overlimit.txt".
+

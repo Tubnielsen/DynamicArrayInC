@@ -2,7 +2,7 @@
 #include "vector.h"
 #include <string.h>
 
-static const int CELLSIZE = 32;
+static const int CELLSIZE = 128;
 
 // Initialize a vector to be empty.
 // Pre: v != NULL
